@@ -1,6 +1,6 @@
 {
   "version": 2,
   "builds": [
-    { "src": "brat_image_full.js", "use": "@vercel/node" }
+    { "src": "app.js", "use": "@vercel/node" }
   ]
 }
