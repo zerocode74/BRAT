@@ -1,10 +1,10 @@
 import express from 'express';
-import { chromium } from 'playwright';
+import { chromium, devices } from 'playwright';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import os from 'os';
-
 dotenv.config();
+const iphone13 = devices['iPhone 13'];
 
 const config = {
     maxTextLength: 100,
@@ -20,7 +20,8 @@ const utils = {
             browser = await chromium.launch({ headless: true });
             const context = await browser.newContext({
                 viewport: config.viewport,
-                userAgent: config.userAgent
+                userAgent: config.userAgent,
+                ...iphone13
             });
 
             await context.route('**/*', (route) => {
